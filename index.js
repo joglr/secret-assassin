@@ -17,7 +17,14 @@ const fsp = fs.promises;
   let assassins = [...shuffledPlayers];
   assassins.unshift(assassins.pop());
 
+  let longestParticipantName = 0
+
+  for (let p of assassins) {
+    if (p.length > longestParticipantName) longestParticipantName = p.length
+  }
+
   for (let i = 0; i < shuffledPlayers.length; i++) {
-    console.log(`${assassins[i]} -> ${shuffledPlayers[i]}`);
+    console.log(`${assassins[i]} ${'-'.repeat(longestParticipantName - assassins[i].length + 10)}-> ${shuffledPlayers[i]}`);
+    console.log('\n')
   }
 })();
